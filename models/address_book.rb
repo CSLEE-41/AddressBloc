@@ -21,4 +21,10 @@ def add_entry(name, phone, email)
     # #11
     @entries.insert(index, Entry.new(name, phone, email))
 end
+
+
+def remove_entry(entry)
+    @entries.delete(entry)
+   end
+end
 end
