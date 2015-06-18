@@ -6,22 +6,22 @@ class AddressBook
     
     def initialize
         @entries = []
-end
-
-
-def add_entry(name, phone, email)
-    # #9
-    index = 0
-    @entries.each do |entry|
-        # #10
-        if name < entry.name
-            break
-        end
-        index += 1
     end
-    # #11
-    @entries.insert(index, Entry.new(name, phone, email))
-end
+
+
+    def add_entry(name, phone, email)
+        # #9
+        index = 0
+        @entries.each do |entry|
+            # #10
+            if name < entry.name
+                break
+            end
+            index += 1
+        end
+        # #11
+        @entries.insert(index, Entry.new(name, phone, email))
+    end
 
     def import_from_csv(file_name)
         csv_text = File.read(file_name)
@@ -61,16 +61,12 @@ end
   
   
     def iterative_search(name)
-      @entries.each do |entry|
-          
-          if name == entry.name
-              
-              return entry
-          else
-          
-         return nil
-       
-      end
+        @entries.each do |entry|
+            if name == entry.name
+                return entry
+            end
+        end
+
+        nil
     end
-  end
 end
