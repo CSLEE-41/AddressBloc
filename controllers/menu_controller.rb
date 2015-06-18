@@ -145,6 +145,7 @@ class MenuController
         puts "d - delete entry"
         puts "e - edit this entry"
         puts "m - return to main menu"
+        puts "z - delete all entries"
         
         # #17
         selection = gets.chomp
@@ -163,6 +164,9 @@ class MenuController
             when "m"
             system "clear"
             main_menu
+            
+            when "z"
+            detonate
             else
             system "clear"
             puts "#{selection} is not a valid input"
@@ -175,6 +179,15 @@ class MenuController
         def delete_entry(entry)
             @address_book.entries.delete(entry)
             puts "#{entry.name} has been deleted"
+        end
+        
+        def detonate
+            @address_book.entries.each do |entry|
+                if !entry.empty?
+                    entry.delete_entry
+                else
+            end
+                p "Entries cleared"
         end
         
         def edit_entry(entry)
